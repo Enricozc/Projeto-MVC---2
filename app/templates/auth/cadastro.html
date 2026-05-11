@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+        }
+
+        .cadastro-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .cadastro-container h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #3b82f6;
+            outline: none;
+            box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .btn-cadastro {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #3b82f6;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-cadastro:hover {
+            background: #2563eb;
+        }
+
+        .login-link {
+            margin-top: 20px;
+            text-align: center;
+            color: #555;
+        }
+
+        .login-link a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cadastro-container">
+
+        <h1>Criar Conta</h1>
+
+        <form action="/auth/cadastro" method="post">
+
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha_hash" required>
+            </div>
+
+            {% if erro %}
+                <p class="error">{{ erro }}</p>
+            {% endif %}
+
+            <button type="submit" class="btn-cadastro">
+                Cadastrar
+            </button>
+
+        </form>
+
+        <p class="login-link">
+            Já tem conta?
+            <a href="/auth/login">Entrar</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

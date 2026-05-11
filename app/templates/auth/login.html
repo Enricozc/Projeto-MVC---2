@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        }
+
+        .login-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-container h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #4f46e5;
+            outline: none;
+            box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #4f46e5;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #4338ca;
+        }
+
+        .register {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .register a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h1>Entrar no Sistema</h1>
+
+        <form action="/auth/login" method="post">
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha_hash" required>
+            </div>
+
+            {% if erro %}
+                <p class="error">{{ erro }}</p>
+            {% endif %}
+
+            <button type="submit" class="btn-login">
+                Entrar
+            </button>
+
+        </form>
+
+        <p class="register">
+            Não tem conta?
+            <a href="/auth/cadastro">Cadastrar</a>
+        </p>
+    </div>
+
+</body>
+</html>

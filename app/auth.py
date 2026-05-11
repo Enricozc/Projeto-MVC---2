@@ -56,3 +56,5 @@ def get_usuario_logado(request: Request):
         return email
     except JWTError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido")
+
+def get
